@@ -136,35 +136,23 @@ def load_data(file):
     return normalized_features, labels
 
 def main():
-    print("Testing with small dataset:")
-    start_time = time.time()
+    print("Feature Selection Algorithm")
+    dataset_file = input("Enter the dataset file name: ")
+    algorithm_choice = input("Choose an algorithm:\n1. Forward Selection\n2. Backward Elimination\nEnter 1 or 2: ")
 
-    small_data, small_labels = load_data("small-test-dataset.txt")
+    data, labels = load_data(dataset_file)
+    num_features = data.shape[1]
 
-    validator = Validator()
+    feature_selector = FeatureSelection(num_features, data, labels)
 
-    subset = [2, 4, 6] # 0 based indexing
-    accuracy = validator.validate(small_data, small_labels, subset)
-
-    end_time = time.time()
-
-    print(f"Small Data Accuracy: {accuracy:.4f}")
-    print(f"Time taken: {end_time - start_time:.4f} seconds")
-
-    print("Testing with large dataset:")
-    start_time = time.time()
-
-    large_data, large_labels = load_data("large-test-dataset.txt")
-
-    validator = Validator()
-
-    subset = [0, 14, 26] # 0 based indexing
-    accuracy = validator.validate(large_data, large_labels, subset)
-
-    end_time = time.time()
-
-    print(f"Large Data Accuracy: {accuracy:.4f}")
-    print(f"Time taken: {end_time - start_time:.4f} seconds")
+    if algorithm_choice == "1":
+        print("Running Forward Selection...")
+        feature_selector.forward_selection()
+    elif algorithm_choice == "2":
+        print("Running Backward Elimination...")
+        feature_selector.backward_elimination()
+    else:
+        print("Invalid choice. Please run the program again and select 1 or 2.")
 
 
 
