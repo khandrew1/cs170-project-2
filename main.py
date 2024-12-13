@@ -1,6 +1,4 @@
-import random
 import numpy as np
-import time
 
 class Classifier:
     def __init__(self):
@@ -158,3 +156,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""
+Group: Andrew Khadder - akhad007; Jason Lin - jlin379; Kasey Doan - kdoan024
+Small Dataset Results:
+    Forward: {3, 5}, Accuracy: 0.92
+    Backwards: {2, 4, 5, 7, 10}, Accuracy: 0.82
+Large Dataset Results:
+    Forward: {1, 27}, Accuracy: 0.955
+    Backwards: {27}, Accuracy: 0.847
+"""
